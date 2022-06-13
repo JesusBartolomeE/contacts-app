@@ -5,20 +5,27 @@ dB = DB()
 
 class Contacts:
      
-     def add_contact(self,data):
-          dB.write_contacts(data)
-          
-     def read_contacts(self):
-          data = dB.read_contacts()
-          return data     
+     def add_contact(self,contact):
+          response=dB.insert_contact(contact)
+          return response
 
-     def delete_contact(self,id):
-          dB.delete_contact(id)
+     def read_contacts(self):    
+          contacts=list(dB.get_contacts())
+          if type(contacts[0]) == dict:
+               values=[]
+               for contact in contacts:
+                    values.append(list(contact.values()))
+               return values     
+          return contacts
 
-     def get_id(self,id):
-          row = dB.get_contact(id)
+     def get_by_id(self,id):
+          row = dB.get_contact_by_id(id)
           return row
 
-     def update_contact(self,data:List[str]):
-          dB.delete_contact(data[0])
-          dB.write_contacts(data)
+     def update_contact(self,id,contact):
+          dB.update_contact_id(id,contact)
+          return ""
+
+     def delete_contact_by_id(self,id):
+          dB.delete_contact(id)
+          return ""

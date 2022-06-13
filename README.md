@@ -4,3 +4,4 @@
 * Flask
 * HTML5
 * Bootstrap
+* MongoDB
