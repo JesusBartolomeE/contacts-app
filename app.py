@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
+
 from flask import url_for
 from flask import flash
 from services import Contacts
@@ -50,4 +51,4 @@ def delete_contact(id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug = True, port = 8000) 
+    app.run(debug = False, port = 8080, host="0.0.0.0") 
